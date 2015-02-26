@@ -136,13 +136,13 @@ public class QuizActivity extends Activity {
         super.onResume();
         Log.i(TAG, "onResume");
     }
-
+    /*Comentario prueba1*/
     @Override
     public void onPause() {
         super.onPause();
         Log.i(TAG, "onPause");
     }
-
+    /*Comentario prueba2*/
     @Override
     public void onStop() {
         super.onStop();
