@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class CheatActivity extends Activity{
 
     public static final String EXTRA_ANSWER_IS_TRUE = "tfquiz.ANSWER_IS_TRUE";
-    public static final String EXTRA_ANSWER_IS_SHWON = "tfquiz.ANSWER_IS_SHOWN";
+    public static final String EXTRA_ANSWER_IS_SHOWN = "tfquiz.ANSWER_IS_SHOWN";
     public static final String KEY_ANSWER = "answer";
 
     boolean mAnswerIsTrue;
@@ -20,7 +20,7 @@ public class CheatActivity extends Activity{
 
     private void setAnswerShownResult(boolean isAnswerShown){
         Intent data = new Intent();
-        data.putExtra(EXTRA_ANSWER_IS_SHWON, isAnswerShown);
+        data.putExtra(EXTRA_ANSWER_IS_SHOWN, isAnswerShown);
         setResult(RESULT_OK, data);
     }
 
@@ -39,9 +39,9 @@ public class CheatActivity extends Activity{
             mAnswerIsTrue = savedInstanceState.getBoolean(KEY_ANSWER);
 
             if (mAnswerIsTrue){
-                mAnswerTextView.setText("True");
+                mAnswerTextView.setText(R.string.true_button);
             } else {
-                mAnswerTextView.setText("False");
+                mAnswerTextView.setText(R.string.false_button);
             }
             setAnswerShownResult(true);
         }
@@ -52,9 +52,9 @@ public class CheatActivity extends Activity{
             @Override
             public void onClick(View v) {
                 if (mAnswerIsTrue){
-                    mAnswerTextView.setText("True");
+                    mAnswerTextView.setText(R.string.true_button);
                 } else {
-                    mAnswerTextView.setText("False");
+                    mAnswerTextView.setText(R.string.false_button);
                 }
                 setAnswerShownResult(true);
             }

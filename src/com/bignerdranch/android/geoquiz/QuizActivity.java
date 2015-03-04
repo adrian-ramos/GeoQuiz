@@ -102,23 +102,6 @@ public class QuizActivity extends Activity {
             }
         });
 
-        mCheatButton = (Button)findViewById(R.id.cheat_button);
-        mCheatButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent (QuizActivity.this, CheatActivity.class);
-                boolean answerIsTrue = mAnswerKey[mCurrentIndex].isTrueQuestion();
-                i.putExtra(CheatActivity.EXTRA_ANSWER_IS_TRUE, answerIsTrue);
-                startActivityForResult(i, 0);
-            }
-        });
-
-        if (savedInstanceState != null) {
-            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
-        }
-
-        updateQuestion();
-
         mPrevButton = (Button) findViewById(R.id.prev_button);
         mPrevButton.setOnClickListener(new View.OnClickListener(){
 
@@ -141,18 +124,36 @@ public class QuizActivity extends Activity {
 
         updateQuestion();
 
+        mCheatButton = (Button)findViewById(R.id.cheat_button);
+        mCheatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent (QuizActivity.this, CheatActivity.class);
+                boolean answerIsTrue = mAnswerKey[mCurrentIndex].isTrueQuestion();
+                i.putExtra(CheatActivity.EXTRA_ANSWER_IS_TRUE, answerIsTrue);
+                startActivityForResult(i, 0);
+            }
+        });
+
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
+
+        updateQuestion();
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        mIsCheater = data.getBooleanExtra(CheatActivity.EXTRA_ANSWER_IS_SHWON, false);
+        mIsCheater = data.getBooleanExtra(CheatActivity.EXTRA_ANSWER_IS_SHOWN, false);
     }
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
         savedInstanceState.putBoolean(KEY_CHEAT, mIsCheater);
+
     }
     
     @Override
@@ -166,13 +167,13 @@ public class QuizActivity extends Activity {
         super.onResume();
         Log.i(TAG, "onResume");
     }
-    /*Comentario prueba1*/
+
     @Override
     public void onPause() {
         super.onPause();
         Log.i(TAG, "onPause");
     }
-    /*Comentario prueba2*/
+
     @Override
     public void onStop() {
         super.onStop();

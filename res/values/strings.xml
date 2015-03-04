@@ -26,7 +26,6 @@
   <string name="warning_text">Are you sure?</string>
   <string name="show_answer_button">Show Answer</string>
   <string name="judgement_toast">Cheating is wrong</string>
-  <string name="incorrect_judgement_toast">
-      You don't cheat very well. \nStick to guessing.</string>
+  <string name="incorrect_judgement_toast">You do not cheat very well. \nStick to guessing.</string>
 
 </resources>
