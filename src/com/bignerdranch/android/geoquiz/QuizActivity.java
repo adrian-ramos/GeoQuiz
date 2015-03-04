@@ -153,7 +153,6 @@ public class QuizActivity extends Activity {
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
         savedInstanceState.putBoolean(KEY_CHEAT, mIsCheater);
-
     }
     
     @Override
